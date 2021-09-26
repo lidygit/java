@@ -9,12 +9,13 @@ public class HttpUtil {
 
     public static void main(String[] args) {
         HttpUtil httpUtil = new HttpUtil();
-        httpUtil.doGet();
+        String url = "http://localhost:8801";
+        httpUtil.doGet(url);
     }
 
-    public void doGet(){
+    public void doGet(String url){
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        HttpGet httpGet = new HttpGet("http://localhost:8801");
+        HttpGet httpGet = new HttpGet(url);
 
         CloseableHttpResponse response = null;
         try {
