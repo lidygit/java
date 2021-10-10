@@ -33,8 +33,8 @@ public class NettyHttpClientHandler extends ChannelInboundHandlerAdapter {
     private FullHttpRequest sendHttpRequest() throws URISyntaxException {
         //发送请求至服务端
 
-        URI url = new URI("/test");
-        String msg = "hello";
+        URI url = new URI("");
+        String msg = "";
 
         //配置HttpRequest的请求数据和一些配置信息
         FullHttpRequest request = new DefaultFullHttpRequest(HTTP_1_1,

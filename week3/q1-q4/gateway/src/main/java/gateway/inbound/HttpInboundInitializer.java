@@ -1,6 +1,5 @@
 package gateway.inbound;
 
-import gateway.outbound.netty.NettyHttpClientOutboundHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
@@ -35,8 +34,8 @@ public class HttpInboundInitializer extends ChannelInitializer<SocketChannel> {
         //解压
         p.addLast(new HttpContentDecompressor());
         //绑定handler
-//        p.addLast(new HttpInboundHandler(this.proxyServer));
-        p.addLast(new NettyHttpClientOutboundHandler(this.proxyServer));
+        p.addLast(new HttpInboundHandler(this.proxyServer));
+//        p.addLast(new NettyHttpClientOutboundHandler(this.proxyServer));
 
     }
 }
