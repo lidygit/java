@@ -1,17 +1,12 @@
-import java.util.concurrent.ThreadFactory;
 
 /**
- * @Description: java类作用描述
- * @Author: l
- * @CreateDate: 2021/10/17 19:42
- * @需求:
- * @思路说明:
+ * 使用共享变量通信
  */
 public class Solution1 {
     public volatile static boolean flag = true;
     public static void main(String[] args) {
 
-        Thread thread = new Thread(new WorkThread());
+        Thread thread = new Thread(new WorkThread1());
         thread.start();
         while(flag){
 
