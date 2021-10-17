@@ -6,17 +6,24 @@
  * @思路说明:
  */
 public class WorkThread7 implements Runnable{
+
     @Override
     public void run() {
         Thread currentThread = Thread.currentThread();
         String currentThreadName = currentThread.getName();
-        System.out.println("这是子线程的名称：" + currentThreadName);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        System.out.println("子线程" + currentThreadName+"计算中。。。");
+        Solution7.res=sum();
         Solution7.semaphore.release();
         Solution7.semaphore.release();
+    }
+
+    private static int sum() {
+        return fibo(36);
+    }
+
+    private static int fibo(int a) {
+        if ( a < 2)
+            return 1;
+        return fibo(a-1) + fibo(a-2);
     }
 }

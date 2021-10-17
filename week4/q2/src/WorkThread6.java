@@ -6,16 +6,23 @@
  * @思路说明:
  */
 public class WorkThread6 implements Runnable {
+
+
     @Override
     public void run() {
         Thread currentThread = Thread.currentThread();
         String currentThreadName = currentThread.getName();
-        System.out.println("这是子线程的名称：" + currentThreadName);
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        Solution6.queue.offer(1);
+        System.out.println("子线程" + currentThreadName+"计算中。。。");
+        Solution6.queue.offer(sum());
+    }
+
+    private static int sum() {
+        return fibo(36);
+    }
+
+    private static int fibo(int a) {
+        if ( a < 2)
+            return 1;
+        return fibo(a-1) + fibo(a-2);
     }
 }
