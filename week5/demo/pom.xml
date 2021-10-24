@@ -68,6 +68,11 @@
 			<version>4.8</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>cn.novalue.starter</groupId>
+			<artifactId>myservice-spring-boot-autoconfigure</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
