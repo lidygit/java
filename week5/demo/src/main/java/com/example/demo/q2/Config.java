@@ -11,12 +11,12 @@ import org.springframework.context.annotation.Configuration;
  * @思路说明:
  */
 @Configuration
-public class AnnotationConfig {
+public class Config {
 
     @Bean
-    public User getUser(){
-        User user = new User();
-        user.setName("注解");
+    public UserConfig getUser(){
+        UserConfig user = new UserConfig();
+        user.setName("config");
         user.setPhone("00000000");
 
         return user;

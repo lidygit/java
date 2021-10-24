@@ -1,11 +1,12 @@
 package com.example.demo;
 
-import com.example.demo.q2.User;
+import com.example.demo.q2.UserConfig;
+import com.example.demo.q2.UserXML;
+import com.example.demo.q2.UserAnnotation;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -14,24 +15,31 @@ import javax.annotation.Resource;
 @SpringBootTest
 class DemoApplicationTests {
 
+    // 通过xml注入bean
+    @Resource
+    private UserXML userXML;
+
 	// 通过注解注入bean
 	@Resource
-	private User user;
+	private UserAnnotation userAnnotation;
 
-
-	// 通过xml注入bean
+	// 通过config
 	@Resource
-	private User userAAA;
+    private UserConfig userConfig;
 
 	@Test
-	void annotation() {
-		System.out.println(user.toString());
+	void config() {
+		System.out.println(userConfig.toString());
 	}
 
 
 	@Test
 	void xml() {
-		System.out.println(userAAA.toString());
+		System.out.println(userXML.toString());
 	}
 
+	@Test
+    void annotation(){
+        System.out.println(userAnnotation.toString());
+    }
 }

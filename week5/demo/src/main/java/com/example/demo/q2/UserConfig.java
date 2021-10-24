@@ -7,7 +7,7 @@ package com.example.demo.q2;
  * @需求:
  * @思路说明:
  */
-public class User {
+public class UserConfig {
     private String name;
     private String phone;
 
@@ -29,7 +29,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserConfig{" +
                 "name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
