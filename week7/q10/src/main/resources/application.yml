@@ -1,0 +1,32 @@
+spring:
+  shardingsphere:
+    props:
+      sql:
+        show:
+          true
+    datasource:
+      names: ds1,ds2
+      ds1:
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/geek?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: 123456
+      ds2:
+        type: com.zaxxer.hikari.HikariDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        jdbc-url: jdbc:mysql://localhost:3306/table_test?serverTimezone=Asia/Shanghai&useSSL=false
+        username: root
+        password: 123456
+    sharding:
+      defaultDatabaseStrategy:
+        hint:
+          algorithmClassName: com.example.demo.q10.MyDataSourceRoute
+      tables:
+        user:
+          actualDataNodes: ds1.t_user
+        order:
+          actualDataNodes: ds2.t_order
+      defaultTableStrategy:
+        none:
+          any: ""
