@@ -2,20 +2,28 @@ package com.example.demo;
 
 import com.example.demo.entity.Order;
 import com.example.demo.mapper.OrderMapper;
+import com.example.demo.service.OrderService;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.internal.matchers.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
+import javax.annotation.Resource;
 import java.util.List;
 
+@ImportResource(locations = {"classpath:XA.xml"})
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class DemoApplicationTests {
 
+    @Autowired
+    OrderService orderService;
     @Autowired
     OrderMapper orderMapper;
 
@@ -61,4 +69,8 @@ class DemoApplicationTests {
         }
     }
 
+    @Test
+    void test4() throws InterruptedException {
+     orderService.insert();
+    }
 }
