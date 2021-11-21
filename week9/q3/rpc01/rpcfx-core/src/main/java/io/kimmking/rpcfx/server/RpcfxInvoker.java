@@ -21,9 +21,16 @@ public class RpcfxInvoker {
     public RpcfxResponse invoke(RpcfxRequest request) {
         RpcfxResponse response = new RpcfxResponse();
         String serviceClass = request.getServiceClass();
+        Class<?> clazz;
+        try{
+            clazz=Class.forName(serviceClass);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
 
         // 作业1：改成泛型和反射
-        Object service = resolver.resolve(serviceClass);//this.applicationContext.getBean(serviceClass);
+        Object service = resolver.resolve(clazz);//this.applicationContext.getBean(serviceClass);
 
         try {
             Method method = resolveMethodFromClass(service.getClass(), request.getMethod());
